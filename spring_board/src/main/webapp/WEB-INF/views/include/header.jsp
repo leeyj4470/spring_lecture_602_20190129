@@ -346,44 +346,91 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 		<script type="text/javascript">try { ace.settings.loadState('sidebar') } catch (e) {}</script>
 		<ul class="nav nav-list" id="topMenuUl" style="min-height: 39px; top: 0px;">
 			<li class="hover highlight active">
-				<a data-mcode="MENU90" data-url="" href="#" onclick="onTopMenu('MENU90', '');">
+				<a data-mcode="MENU90" data-url="" href="<%=request.getContextPath() %>/" >
 					<span class="menu-text">HOME</span>
 				</a>
 				<b class="arrow"></b>
 			</li>
 			<li class="hover highlight">
-				<a data-mcode="MENU01" data-url="" href="#" onclick="onTopMenu('MENU01', 'MENU0102');" class="dropdown-toggle">
-				<span class="menu-text">전자메일</span>
+				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/member"  class="dropdown-toggle">
+				<span class="menu-text">직원관리</span>
 				<b class="arrow fa fa-angle-down"></b>
 				</a>
 				<b class="arrow"></b>
 				<ul class="submenu can-scroll">
 					<li class="hover highlight">
-						<a data-mcode="MENU0101" data-url="/mail/mail_form.htm" href="#" onclick="OpenWindow('/mail/mail_form.htm', '', '850', '620');">
-						편지작성</a>
+						<a data-mcode="MENU0101" href="#" onclick="OpenWindow('<%=request.getContextPath() %>/member/regist', '', '850', '620');">
+						직원등록</a>
 						<b class="arrow"></b></li>
 					<li class="hover highlight">
-						<a data-mcode="MENU0112" data-url="/mail/list.htm?box=0" href="#" onclick="onTopMenu('MENU0112', '');">전체메일</a>
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/member/list">전체직원</a>
 						<b class="arrow"></b>
-					</li>
-					<li class="hover highlight">
-						<a data-mcode="MENU0102" data-url="/mail/list.htm?box=1&amp;topbox=1" href="#" onclick="onTopMenu('MENU0102', '');">받은편지함</a>
-						<b class="arrow"></b>
-					</li>
-					<li class="hover highlight">
-						<a data-mcode="MENU0103" data-url="/mail/list.htm?box=2" href="#" onclick="onTopMenu('MENU0103', '');">보낸편지함</a>
-						<b class="arrow"></b>
-					</li>
-					<li class="hover highlight">
-						<a data-mcode="MENU0113" data-url="/mail/list.htm?box=8" href="#" onclick="onTopMenu('MENU0113', '');">내 편지함</a>
-						<b class="arrow"></b>
-					</li>
-					</ul>
-					<div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible" style="display: none; height: 199px; top: 74px; left: 183px;">
-						<div class="scroll-bar" style="height: 182px; top: 0px;">
-						</div>
+					</li>					
+				</ul>
+				<div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible" style="display: none; height: 199px; top: 74px; left: 183px;">
+					<div class="scroll-bar" style="height: 182px; top: 0px;">
 					</div>
-				</li>
-			</ul>
-	</div>
+				</div>
+			</li>
+			<li class="hover highlight">
+				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/board"  class="dropdown-toggle">
+				<span class="menu-text">게시글관리</span>
+				<b class="arrow fa fa-angle-down"></b>
+				</a>
+				<b class="arrow"></b>
+				<ul class="submenu can-scroll">
+					<li class="hover highlight">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/search">
+						통합검색</a>
+						<b class="arrow"></b>
+					</li>	
+					<li class="hover highlight">
+						<a data-mcode="MENU0101" href="<%=request.getContextPath() %>/board/notice" >
+						공지사항</a>
+						<b class="arrow"></b></li>
+					<li class="hover highlight">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/free">
+						자유게시판</a>
+						<b class="arrow"></b>
+					</li>
+					<li class="hover highlight">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/pds">
+						자료실</a>
+						<b class="arrow"></b>
+					</li>					
+				</ul>
+				<div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible" style="display: none; height: 199px; top: 74px; left: 183px;">
+					<div class="scroll-bar" style="height: 182px; top: 0px;">
+					</div>
+				</div>
+			</li>
+			<li class="hover highlight">
+				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/document"  class="dropdown-toggle">
+				<span class="menu-text">문서관리</span>
+				<b class="arrow fa fa-angle-down"></b>
+				</a>
+				<b class="arrow"></b>
+				<ul class="submenu can-scroll">
+					<li class="hover highlight">
+						<a data-mcode="MENU0101" href="<%=request.getContextPath() %>/document/search" >
+						통합검색</a>
+						<b class="arrow"></b></li>
+					<li class="hover highlight">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/document/form">
+						기안서식함</a>
+						<b class="arrow"></b>
+					</li>
+					<li class="hover highlight">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/document/report">
+						보고서서식함</a>
+						<b class="arrow"></b>
+					</li>					
+				</ul>
+				<div class="scroll-track scroll-detached no-track scroll-thin scroll-margin scroll-visible" style="display: none; height: 199px; top: 74px; left: 183px;">
+					<div class="scroll-bar" style="height: 182px; top: 0px;">
+					</div>
+				</div>
+			</li>
+		</ul>
+</div>
 	
