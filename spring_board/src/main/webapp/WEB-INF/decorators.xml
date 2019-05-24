@@ -6,6 +6,6 @@
 	</decorator>
 		
 	<excludes>
-				
+		<pattern>/commons/login</pattern>		
 	</excludes>
 </decorators>
