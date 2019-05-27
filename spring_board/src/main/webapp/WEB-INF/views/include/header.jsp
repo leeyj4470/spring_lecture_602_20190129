@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <meta charset="utf-8" />
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>Groupware System</title>
+<title><decorator:title default="정보시스템"/></title>
 
 <style type="text/css" id="fontFamilyStyleSheet">
 body { font-family: 'Malgun Gothic', sans-serif !important; }
@@ -54,8 +55,11 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 <script src="<%=request.getContextPath()%>/resources/commons/libs/garam-admin-template/1.3.5/dist/js/jquery.min.js"></script>
 <!-- <![endif]-->
 
+<decorator:head />
 
 </head>
+
+
 <body class="no-skin">
 <div id="navbar" class="navbar navbar-default navbar-collapse h-navbar ace-save-state">
 	<div class="navbar-container ace-save-state" id="navbar-container">
@@ -74,7 +78,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			<span class="sr-only">Toggle sidebar</span>
 			<i class="ace-icon fa fa-chevron-down white bigger-150"></i>
 		</button><a href="/" class="navbar-brand" style="padding:8px;">
-				<img src="/userdata/logo" height="29" width="220" style="display: inline;">
+				<img src="<%=request.getContextPath() %>/resources/images/logo.jpg" height="29" width="220" style="display: inline;">
 <!-- 				<span style="font-size: 20px; font-weight: bold; padding-left:15px; font-family: sans-serif !important;"></span>   -->
 			</a>
 			
@@ -373,7 +377,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 				</div>
 			</li>
 			<li class="hover highlight">
-				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/board"  class="dropdown-toggle">
+				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/board/">
 				<span class="menu-text">게시글관리</span>
 				<b class="arrow fa fa-angle-down"></b>
 				</a>

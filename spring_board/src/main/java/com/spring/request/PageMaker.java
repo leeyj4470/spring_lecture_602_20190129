@@ -105,6 +105,14 @@ public class PageMaker {
 		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
 	}
 	
+	public String makeQuery(){	
+		String query="?page="+cri.getPage()
+				    +"&perPageNum="+cri.getPerPageNum()
+				    +"&searchType="+cri.getSearchType()
+				    +"&keyword="+cri.getKeyword();
+		return query;
+	}
+	
 	public String makeQuery(int page){	
 		String query="?page="+page
 				    +"&perPageNum="+cri.getPerPageNum()
