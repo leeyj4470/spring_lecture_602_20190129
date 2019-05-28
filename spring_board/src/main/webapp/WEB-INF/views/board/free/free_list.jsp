@@ -46,7 +46,7 @@
 							</select>
 							
 							<div class="input-group">
-								<input id="searchValue" name="keyword" style="width:100px; margin-left:5px; border-radius: 0px !important;" placeholder="Search for ..." class="form-control" type="text" value="">
+								<input id="searchValue" name="keyword" style="width:100px; margin-left:5px; border-radius: 0px !important;" placeholder="Search for ..." class="form-control" type="text" value="${pageMaker.cri.keyword }">
 								<span id="gridSearch" class="input-group-btn" style="display: inline;">
 									<button type="button" id="searchBtn" class="btn btn-sm btn-white">검색</button>
 								</span>
@@ -80,7 +80,7 @@
 										<table class="ui-jqgrid-htable ui-common-table " role="presentation" aria-labelledby="gbox_grid-table">
 											<thead style="visibility: visible;">
 												<tr class="ui-jqgrid-labels" role="row">
-													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:5%;">
+													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:7%;">
 														<div class="ui-jqgrid-sortable">번호</div>
 													</th>
 													<th class="ui-th-column ui-th-ltr ui-state-default">
@@ -106,7 +106,7 @@
 											<table id="grid-table" tabindex="0" role="presentation" aria-multiselectable="false" aria-labelledby="gbox_grid-table" class="ui-jqgrid-btable ui-common-table">
 												
 													<tr class="jqgfirstrow" role="row">
-														<td role="gridcell" style="width:5%;"></td>
+														<td role="gridcell" style="width:7%;"></td>
 														<td role="gridcell" style=""></td>
 														<td role="gridcell" style="width:15%;"></td>
 														<td role="gridcell" style="width:15%;"></td>
@@ -116,8 +116,11 @@
 													<tr role="row" class="jqgrow ui-row-ltr ui-widget-content">
 														<td role="gridcell" style="text-align:center;" >${board.bno }</td>
 														<td role="gridcell" >
-															<a href="detail${dataMap.pageMaker.makeQuery() }&bno=${board.bno }"
-															   style='<c:if test="${board.viewcnt >= 5}" >font-weight:bold;color:blue;</c:if>'>${board.title }</a>
+															<a href="#" onclick="OpenWindow('detail?bno=${board.bno }','','850','620')"
+															   style='<c:if test="${board.viewcnt >= 5}" >font-weight:bold;color:blue;</c:if>'>${board.title } 
+															   <c:if test="${board.replycnt > 0}" >
+															   -- <span style="color:blue;font-weight:bole;">[${board.replycnt}]</span></a>
+															   </c:if>
 														</td>
 														<td role="gridcell" style="text-align:center;" >
 															<fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd" />
@@ -139,7 +142,7 @@
 															<span class="ui-icon ace-icon"></span>
 														</div>														
 													</td>
-													<td id="grid-pager_center" align="center" style="width: 282px;">
+													<td id="grid-pager_center" align="center" style="width:320px;">
 														<table class="ui-pg-table ui-common-table ui-paging-pager">
 															<tr>
 																<td id="first_grid-pager" class="ui-pg-button ui-corner-all ui-state-disabled" title="First Page" style="cursor: default;">
@@ -152,7 +155,7 @@
 																	<span class="ui-separator"></span>
 																</td>
 																<td id="input_grid-pager" dir="ltr">
-																	<input id="pageNum" class="ui-pg-input ui-corner-all" type="text" size="2" maxlength="7" value="1"> / <span id="sp_1_grid-pager">1</span>
+																	<input id="pageNum" class="ui-pg-input ui-corner-all" type="text" size="2" maxlength="7" value="${pageMaker.cri.page }" style="width:40px;"> / <span id="sp_1_grid-pager">${pageMaker.realEndPage }</span>
 																</td>
 																<td class="ui-pg-button ui-state-disabled">
 																	<span class="ui-separator"></span>
@@ -165,11 +168,11 @@
 																</td>
 																<td dir="ltr">
 																	<select id="perPageNum" class="ui-pg-selbox ui-widget-content ui-corner-all" role="listbox" title="Records per Page">
-																		<option role="option" value="10" selected="selected">10</option>
-																		<option role="option" value="20">20</option>
-																		<option role="option" value="30">30</option>
-																		<option role="option" value="50">50</option>
-																		<option role="option" value="100">100</option>
+																		<option role="option" value="10" ${pageMaker.cri.perPageNum ==10 ? 'selected' : '' }>10</option>
+																		<option role="option" value="20" ${pageMaker.cri.perPageNum ==20 ? 'selected' : '' }>20</option>
+																		<option role="option" value="30" ${pageMaker.cri.perPageNum ==30 ? 'selected' : '' }>30</option>
+																		<option role="option" value="50" ${pageMaker.cri.perPageNum ==50 ? 'selected' : '' }>50</option>
+																		<option role="option" value="100" ${pageMaker.cri.perPageNum ==100 ? 'selected' : '' }>100</option>
 																	</select>
 																</td>
 															</tr>

@@ -389,16 +389,16 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 						<b class="arrow"></b>
 					</li>	
 					<li class="hover highlight">
-						<a data-mcode="MENU0101" href="<%=request.getContextPath() %>/board/notice" >
+						<a data-mcode="MENU0101" href="<%=request.getContextPath() %>/board/notice/list" >
 						공지사항</a>
 						<b class="arrow"></b></li>
 					<li class="hover highlight">
-						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/free">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/free/list">
 						자유게시판</a>
 						<b class="arrow"></b>
 					</li>
 					<li class="hover highlight">
-						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/pds">
+						<a data-mcode="MENU0112" href="<%=request.getContextPath() %>/board/pds/list">
 						자료실</a>
 						<b class="arrow"></b>
 					</li>					

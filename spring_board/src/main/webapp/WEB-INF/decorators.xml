@@ -6,6 +6,7 @@
 	</decorator>
 		
 	<excludes>
-		<pattern>/commons/login</pattern>		
+		<pattern>/commons/login*</pattern>	
+		<pattern>/board/free/detail*</pattern>	
 	</excludes>
 </decorators>

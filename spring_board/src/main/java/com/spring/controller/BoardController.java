@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.dto.BoardVO;
 import com.spring.request.Criteria;
 import com.spring.service.BoardService;
 import com.spring.service.PdsService;
@@ -57,6 +58,19 @@ public class BoardController {
 		modelnView.setViewName(url);
 		
 		return modelnView;		
+	}
+	
+	@RequestMapping("/free/detail")
+	public ModelAndView freeDetail(int bno, ModelAndView modelnView) 
+										throws SQLException{
+		String url="board/free/free_detail";
+		
+		BoardVO board = bService.getBoard(bno);
+		
+		modelnView.addObject("board",board);
+		modelnView.setViewName(url);
+		
+		return modelnView;
 	}
 	
 }
