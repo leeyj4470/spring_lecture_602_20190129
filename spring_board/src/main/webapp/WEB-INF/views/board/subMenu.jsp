@@ -6,7 +6,6 @@
 
 	<div id="sidebar2" class="sidebar responsive" style="" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
 				
-				<!-- 김정국 테스트 중 -->
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts" style="display:inline;">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large" style="padding:0px 0px 3px;">
 						<button class="btn btn-success" onclick="javascript:newContents(1);" data-rel="tooltip" data-placement="bottom" title="New Mail" data-original-title="Bottm Info">
@@ -30,17 +29,25 @@
 						<span class="btn btn-danger"></span>
 					</div>
 				</div>
-				<!-- 김정국 테스트 중 -->
-				
+			
+			
 			<ul class="nav nav-list" style="top: 0px;">	
 				<c:forEach items="${subMenuList }" var="subMenu">		
 				<li class="">
-					<a href="<%=request.getContextPath() %>/board/${subMenu[1] }" style="text-align:center;">						
+					<a href="<%=request.getContextPath() %>/board/${subMenu[1] }" >						
+						<i class="menu-icon fa subMenu" ></i>
 						<span class="menu-text">${subMenu[0]}</span>
 					</a>
 					<b class="arrow"></b>					
 				</li>	
 				</c:forEach>
+				<script>
+					var iconNameList=["fa-search-plus","fa-inbox",
+					"fa-hacker-news","fa-pencil-square-o","fa-archive"];
+					$('i.subMenu').each(function(index,obj){
+						$(this).addClass(iconNameList[index]);
+					});
+				</script>	
 			</ul>
 				<div class="sidebar-toggle sidebar-collapse">
 					<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

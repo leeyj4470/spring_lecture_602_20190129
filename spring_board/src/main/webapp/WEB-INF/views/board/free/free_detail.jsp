@@ -139,20 +139,20 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 	      <div class="panel-heading">
 	        <h4 class="panel-title" style="font-size:14px; font-family: inherit;" id="panel-title">
 	        	<i class="ace-icon fa fa-quote-left smaller-80"></i>
-	        	댓글	- <span id="cmtnum" style="color:#FF6600;">${replyList.size() }</span> 개의 의견이 있습니다.
+	        	댓글	- <span id="cmtnum" style="color:#FF6600;">${board.replycnt }</span> 개의 의견이 있습니다.
 			 
 	        </h4>
 	      </div>
 	      <div class="panel-body" style="padding: 5px;">			
 			<div class="col-xs-12  col-sm-10 g_value" style="border: 0px; padding-top: 8px;">
-			<textarea style="width:100%; height:60px; line-height:120%;" id="bbsComment.comments" name="replytext" onkeyup="javascript:TextCount(this);"></textarea>
+			<textArea style="width:100%; height:60px; line-height:120%;" id="newReplyText" name="replytext" onkeyup="javascript:TextCount(this);"></textarea>
 			<br>
 			<a id="editButton" style="display:none;" href="javascript:goCommentSubmit('edit','')">편집</a>		
 			<font color="#656565">현재 <span id="tmptext">0</span>/최대 1000byte(한글 500자, 영문 1000자)</font>
 			</div>
 			<div id="commentSave" style="margin:8px;">
 				
-				<button type="button" class="btn btn-white btn-xs radius-4" onclick="" title="save">
+				<button type="button" class="btn btn-white btn-xs radius-4" onclick="reply_regist_go();" title="save">
 					<i class="red ace-icon fa fa-pencil-square-o bigger-160"></i>
 				</button>
 			</div>			
@@ -168,29 +168,14 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			<div class="scroll-track___ scroll-active___" style="display: block; sheight: 300px;">
 			<div class="scroll-bar___" style="sheight: 232px; top: 0px;"></div>
 			</div>
-			<div class="scroll-content___" style="smax-height: 300px;">				
-			
-				<div class="itemdiv dialogdiv">
-					<div class="user">
-						<img alt="Jennifer's Avatar" src="<%=request.getContextPath() %>/resources/images/avatar4.png">
-					</div>
-					<div class="body">
-						<div class="name" style="cursor: pointer;">
-							<a class="maninfo" rel="20051014164401" data-hasqtip="2">prettyfy replyer</a>
-						</div>
-						<div class="time">
-							<i class="ace-icon fa fa-clock-o"></i>
-							<span class="blue">regdate</span>
-						</div>
-						<div class="text">
-							<i class="ace-icon fa fa-quote-left" style="color:#555;"></i>
-							<span style="white-space:pre-wrap;line-height:130%;">replytext</span>
-							&nbsp;<i class="ace-icon fa fa-quote-right" style="color:#555;"></i>
-						</div>
-					</div>
-				</div>				
+			<div id="repliesDiv" class="scroll-content___" style="smax-height: 300px;">				
 			</div>
-		</div>
+			<div class='text-center'>
+				<ul id="pagination" class="pagination pagination-sm no-margin ">
+	
+				</ul>
+			</div>									
+		</div>		
 	</div>		      
 </div>
      
@@ -199,12 +184,29 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 
 <!-- 간단한 의견 목록 끝 -->
 </div>
-
-
-
-
-
 </div>
+
+<!-- Modal -->
+<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>        
+      </div>
+      <div class="modal-body" data-rno>
+        <p><input type="text" id="replytext" class="form-control"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+        <button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>            
+
 
 </body>
 <script src="<%=request.getContextPath()%>/resources/commons/libs/garam-admin-template/1.3.5/dist/js/garam-extra.min.js"></script>
@@ -250,5 +252,11 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 <script src="<%=request.getContextPath()%>/resources/commons/scripts/organization_selector.js"></script>
 
 <%@ include file="/WEB-INF/views/board/free/free_detail_js.jsp" %>
+<%@ include file="/WEB-INF/views/board/free/reply.jsp" %>
 
 </html>
+
+
+
+
+

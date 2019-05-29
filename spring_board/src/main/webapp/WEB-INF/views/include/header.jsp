@@ -218,20 +218,11 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 															</span>
 														</a>
 													</li>
-												
-										    
-										    
-										
-										
 										
 									</ul>
 								</div>
 								</div></li>
-
-								
 							</ul>
-							
-							
 					</div>
 					<!-- </div> -->
 				</li>
@@ -351,12 +342,14 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 		<ul class="nav nav-list" id="topMenuUl" style="min-height: 39px; top: 0px;">
 			<li class="hover highlight active">
 				<a data-mcode="MENU90" data-url="" href="<%=request.getContextPath() %>/" >
+					<i class="menu-icon fa fa-home green" style="float: left;"></i>
 					<span class="menu-text">HOME</span>
 				</a>
 				<b class="arrow"></b>
 			</li>
 			<li class="hover highlight">
 				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/member"  class="dropdown-toggle">
+				<i class="menu-icon fa fa-users" style="float:left;" ></i>
 				<span class="menu-text">직원관리</span>
 				<b class="arrow fa fa-angle-down"></b>
 				</a>
@@ -378,7 +371,8 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			</li>
 			<li class="hover highlight">
 				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/board/">
-				<span class="menu-text">게시글관리</span>
+				<i class="menu-icon fa fa-comments-o" style="float: left;"></i>
+				<span class="menu-text">게시판관리</span>
 				<b class="arrow fa fa-angle-down"></b>
 				</a>
 				<b class="arrow"></b>
@@ -410,6 +404,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			</li>
 			<li class="hover highlight">
 				<a data-mcode="MENU01" data-url="" href="<%=request.getContextPath() %>/document"  class="dropdown-toggle">
+				<i class="menu-icon fa fa-archive" style="float: left;"></i>
 				<span class="menu-text">문서관리</span>
 				<b class="arrow fa fa-angle-down"></b>
 				</a>
