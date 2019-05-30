@@ -5,7 +5,7 @@
 		select *
 		from reply
 		where bno=#{bno}
-		order by rno desc
+		order by rno asc
 	</select>
 	<select id="countReply" resultType="int">
 		select count(bno) 
