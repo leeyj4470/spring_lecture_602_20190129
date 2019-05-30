@@ -1,9 +1,12 @@
 package com.spring.controller;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,6 +76,24 @@ public class BoardController {
 		return modelnView;
 	}
 	
+	@RequestMapping("/regist")
+	public String registForm() {
+		String url="board/regist";
+		return url;
+	}
+	
+	@RequestMapping(value="/free/regist",method=RequestMethod.POST)
+	public void freeRegist(BoardVO board,HttpServletResponse response)throws Exception{
+		String url="redirect:list";
+		
+		bService.write(board);
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println("<script>");
+		out.println("window.opener.location.reload();window.close();");
+		out.println("</script>");	
+	}
 }
 
 

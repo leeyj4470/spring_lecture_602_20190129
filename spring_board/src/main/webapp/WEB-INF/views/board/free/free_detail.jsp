@@ -187,7 +187,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 </div>
 
 <!-- Modal -->
-<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+<div id="modifyModal" class="modal fade in" >
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">

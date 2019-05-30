@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js" ></script>
 <script id="reply-template" type="text/x-handlebars-template">
 	{{#each .}}
-		<div class="itemdiv dialogdiv replyLi">
+		<div class="itemdiv dialogdiv replyLi" data-rno={{rno}}>
 			<div class="user">
 				<img alt="Jennifer's Avatar" src="<%=request.getContextPath() %>/resources/images/avatar4.png">
 			</div>
@@ -139,6 +139,68 @@ $("div#repliesDiv").on('click','#modifyReplyBtn',function(event){
 		alert("수정이 불가합니다.");
 		$(this).attr("data-toggle","");
 	}
+});
+
+$('#repliesDiv').on('click','.replyLi',function(e){	
+	var reply=$(this);
+	$('#replytext').val(reply.find('div.text span').text());
+	$('.modal-title').html(reply.attr('data-rno'));
+});
+
+$('#replyModBtn').on('click',function(event){
+	var rno=$('.modal-title').html();
+	var replytext=$('#replytext').val();
+	
+	$.ajax({
+		method:'put',
+		url:"<%=request.getContextPath()%>/replies/"+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"PUT"
+		},
+		data:JSON.stringify({replytext:replytext}),
+		dataType:'text',
+		success:function(result){
+			if(result=="SUCCESS"){
+				alert("수정되었습니다.");			
+				getPage("<%=request.getContextPath()%>/replies/"
+						+bno+"/"+replyPage);
+			}
+		},
+		error:function(error){
+			alert("댓글 수정에 실패했습니다.");
+		},
+		complete:function(){
+			$('#modifyModal').modal('hide');
+		}
+	});
+});
+
+$('#replyDelBtn').on('click',function(event){
+	var rno=$('.modal-title').html();
+	
+	$.ajax({
+		method:'delete',
+		url:"<%=request.getContextPath()%>/replies/"+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Override":"delete"
+		},
+		dataType:'text',
+		success:function(result){
+			if(result="SUCCESS"){
+				alert("삭제되었습니다.");				
+				getPage("<%=request.getContextPath()%>/replies/"
+						+bno+"/"+replyPage);
+			}
+		},
+		error:function(error){
+			alert('삭제 실패했습니다.');			
+		},
+		complete:function(){
+			$('#modifyModal').modal('hide');
+		}
+	});
 });
 </script>
 

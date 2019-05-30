@@ -8,5 +8,6 @@
 	<excludes>
 		<pattern>/commons/login*</pattern>	
 		<pattern>/board/free/detail*</pattern>	
+		<pattern>/board/regist*</pattern>
 	</excludes>
 </decorators>

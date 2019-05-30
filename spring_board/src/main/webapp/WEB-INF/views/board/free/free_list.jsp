@@ -14,6 +14,9 @@
 			width:100%;
 		}
 	</style>	
+	<script>
+		$('.maninfo').each(function(){}).click(function(event) { event.preventDefault(); });	
+	</script>
 </head>
 <body class="no-skin">
 	<div class="main-content">
@@ -31,7 +34,7 @@
 							
 					<!-- 상단 우측버튼 -->
 					<div class="wizard-actions-L">
-						<button type="button" class="btn btn-sm btn-white btn-bold">
+						<button type="button" class="btn btn-sm btn-white btn-bold" onclick="OpenWindow('<%=request.getContextPath()%>/board/regist','','850','620');">
 							<b>글등록</b>
 						</button>
 						<div class="wizard-inner-R">
@@ -125,7 +128,12 @@
 														<td role="gridcell" style="text-align:center;" >
 															<fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd" />
 														</td>
-														<td role="gridcell" style="text-align:center;" >${board.writer }</td>
+														<td role="gridcell" style="text-align:center;" >
+															<a class="maninfo" rel="20180117182516" href="#" data-hasqtip="21">
+																<i class="pink2 ace-icon fa fa-user" title="작성자"></i>															
+																${board.writer }
+															</a>
+														</td>
 														<td role="gridcell" style="text-align:center;" >${board.viewcnt }</td>
 													</tr>
 													</c:forEach>

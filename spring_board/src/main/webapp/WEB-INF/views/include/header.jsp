@@ -48,6 +48,12 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/commons/css/index.css" />
 <style type="text/css">
 .marquee { width: 100%; overflow: hidden; background: transparent; } /* 뉴스티커 *//**/
+div#logo{
+	background-image:url('<%=request.getContextPath()%>/resources/images/logo.jpg');
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
 </style>
 <!-- inline styles related to this page end -->
 
@@ -78,7 +84,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			<span class="sr-only">Toggle sidebar</span>
 			<i class="ace-icon fa fa-chevron-down white bigger-150"></i>
 		</button><a href="/" class="navbar-brand" style="padding:8px;">
-				<img src="<%=request.getContextPath() %>/resources/images/logo.jpg" height="29" width="220" style="display: inline;">
+				<div id="logo" style="height:29px;width:220px;"></div>
 <!-- 				<span style="font-size: 20px; font-weight: bold; padding-left:15px; font-family: sans-serif !important;"></span>   -->
 			</a>
 			
