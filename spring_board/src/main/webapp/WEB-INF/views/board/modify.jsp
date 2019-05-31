@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,19 +17,6 @@
 
 <style type="text/css" id="fontFamilyStyleSheet">
 body { font-family: 'Malgun Gothic', sans-serif !important; }
-
-
-div#upload{display:none};	
-div.bbsId{display:none};
-div.preserveId{display:none};
-div.openDate{display:none};
-div.sharelist{display:none};
-
-div#upload{display:block};	
-div.bbsId{display:block};
-div.preserveId{display:block};
-div.openDate{display:block};
-div.sharelist{display:block};
 
 }
 
@@ -164,7 +152,9 @@ div.sharelist{display:block};
 <!-- <body style="margin:1px;"> -->
 <!-- <div id="pageScroll" class="wrapper"> -->
 <form id="modifyForm" class="form-horizontal" method="post">
-
+	
+	<input type="hidden" name="bno" value="${board.bno }" />
+	
 	<div class="hr_line">&nbsp;</div>
 	<div class="form-group">
 		<label for="writer" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label required">
@@ -175,11 +165,11 @@ div.sharelist{display:block};
 				   style="background:#aaa;"/>			
 		</div>		
 	</div>
-	<div class="form-group" style="display:;">
+	<div class="form-group">
 		<label for="bbs.category" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label">
 			분&nbsp;&nbsp;&nbsp;류</label>
 		<div class="col-xs-8 col-sm-10 g_value">			
-			<select name="category" readonly>
+			<select name="category" disabled>
 				<option value="" >---분류선택---</option>	
 				<option value="notice" ${category eq 'notice' ? 'selected':''}>공지사항</option>				
 				<option value="free" ${category eq 'free' ? 'selected':''}>자유게시판</option>
@@ -191,7 +181,7 @@ div.sharelist{display:block};
 		<label for="dms.hotFlag" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label"></label> 
 			<div class="col-xs-8 col-sm-10 g_value"></div>
 	</div>
-	<div class="form-group openDate" style="display: visible;"><!-- 2018-01-18 게시기간 사용안함 -->
+	<div class="form-group" style="display:${category eq 'free' ? 'none':'block'};"><!-- 2018-01-18 게시기간 사용안함 -->
 		<label for="dms.subject" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label">
 			게시기간
 		</label>
@@ -207,7 +197,7 @@ div.sharelist{display:block};
 			</div>
 		</div>
 	</div>	
-	<div class="form-group bbsId" style="display:visible;">
+	<div class="form-group bbsId" style="display:${category eq 'free' ? 'none':'block'};" >
 		<label for="dms.subject" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label">
 		구&nbsp;&nbsp;&nbsp;분</label>
 		<div class="col-xs-8 col-sm-10 g_value">
@@ -216,7 +206,7 @@ div.sharelist{display:block};
 			</select>
 		</div>
 	</div> 
-	<div class="form-group preserveId" style="display:visible;">
+	<div class="form-group preserveId"  style="display:${category eq 'free' ? 'none':'block'};">
 		<label for="dms.subject" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label required">
 		보존년한
 		</label>
@@ -234,7 +224,7 @@ div.sharelist{display:block};
 	</div>  
 
 	<!-- 공유권한 -->
-	<div class="form-group sharelist" style="display:visible;">
+	<div class="form-group sharelist" style="display:${category eq 'free' ? 'none':'block'};">
 		<label for="" class="col-xs-4 col-sm-2 control-label no-padding-right bolder g_label required">
 			공유대상
 		</label>
@@ -293,8 +283,8 @@ div.sharelist{display:block};
 <input type="hidden" id="fileuploadstartconfirm" name="fileuploadstartconfirm" value="0" />
 
 
-<div class="bline"></div>
-<div id="upload" class="upload" style="background-color:#f9f9f9; height:166px; max-height:166px; border:1px solid  #6fb3e0; border-radius:2px; ">
+<div class="bline" ></div>
+<div id="upload" class="upload" style="display:${category eq 'free' ? 'none':'block'};background-color:#f9f9f9; height:166px; max-height:166px; border:1px solid  #6fb3e0; border-radius:2px; ">
 	<div class="row______________ fileupload-buttonbar">
 <!-- 		<span class="btn btn-success fileinput-button"> -->
 		<span class="fileinput-button btn btn-minier btn-inverse">

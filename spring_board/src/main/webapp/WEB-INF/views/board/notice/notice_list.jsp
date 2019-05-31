@@ -5,8 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<c:set var="boardList" value="${dataMap.boardList }" />
+<c:set var="noticeList" value="${dataMap.noticeList }" />
 <c:set var="pageMaker" value="${dataMap.pageMaker }" />
+<c:set var="pointNoticeList" value="${dataMap.pointNoticeList }" />
 
 <head>
 	<style>
@@ -23,7 +24,7 @@
 		<div class="main-content-inner">
 			<!-- 서브메뉴 -->
 			<%@ include file="/WEB-INF/views/board/subMenu.jsp" %>
-			<%-- <c:import url="/board/subMenu" /> --%>	
+			<%-- <c:import url="/notice/subMenu" /> --%>	
 		
 			<!-- page content -->		
 			<div class="page-content main-content" style="padding:0;">
@@ -34,7 +35,7 @@
 							
 					<!-- 상단 우측버튼 -->
 					<div class="wizard-actions-L">
-						<button type="button" class="btn btn-sm btn-white btn-bold" onclick="OpenWindow('<%=request.getContextPath()%>/board/regist','','850','620');">
+						<button type="button" class="btn btn-sm btn-white btn-bold" onclick="OpenWindow('<%=request.getContextPath()%>/notice/regist','','850','620');">
 							<b>글등록</b>
 						</button>
 						<div class="wizard-inner-R">
@@ -83,17 +84,23 @@
 										<table class="ui-jqgrid-htable ui-common-table " role="presentation" aria-labelledby="gbox_grid-table">
 											<thead style="visibility: visible;">
 												<tr class="ui-jqgrid-labels" role="row">
-													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:7%;">
-														<div class="ui-jqgrid-sortable">번호</div>
+													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:3%;">
+														<div class="ui-jqgrid-sortable"></div>
+													</th>
+													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:8%;">
+														<div class="ui-jqgrid-sortable">번&nbsp;&nbsp;호</div>
 													</th>
 													<th class="ui-th-column ui-th-ltr ui-state-default">
-														<div class="ui-jqgrid-sortable">제목</div>
+														<div class="ui-jqgrid-sortable">제&nbsp;&nbsp;목</div>
 													</th>										
 													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:15%;">
 														<div class="ui-jqgrid-sortable">작성일</div>
 													</th>		
 													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:15%;">
 														<div class="ui-jqgrid-sortable">작성자</div>
+													</th>
+													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:3%;">
+														<div class="ui-jqgrid-sortable">첨&nbsp;&nbsp;부</div>
 													</th>
 													<th class="ui-th-column ui-th-ltr ui-state-default" style="width:10%;">
 														<div class="ui-jqgrid-sortable">조회수</div>
@@ -103,38 +110,85 @@
 										</table>
 									</div>
 								</div>
+								
 								<div class="ui-jqgrid-bdiv" style="height: 440px;">
+									<div style="position:relative;">										
+										<table id="grid-table" tabindex="0" role="presentation" aria-multiselectable="false" aria-labelledby="gbox_grid-table" class="ui-jqgrid-btable ui-common-table">
+											<tr class="jqgfirstrow" role="row">
+												<td role="gridcell" style="width:3%;"></td>
+												<td role="gridcell" style="width:8%;"></td>
+												<td role="gridcell" style=""></td>
+												<td role="gridcell" style="width:15%;"></td>
+												<td role="gridcell" style="width:15%;"></td>
+												<td role="gridcell" style="width:3%;"></td>
+												<td role="gridcell" style="width:10%;"></td>
+											</tr>
+											<c:forEach var="pointNotice" items="${pointNoticeList }">											
+											<tr role="row" class="jqgrow ui-row-ltr ui-widget-content">
+												<td role="gridcell" style="text-align:center;" >
+													&nbsp;<i class="red ace-icon fa fa-star bigger-120" title="중요"></i>
+												</td>
+												<td role="gridcell" style="text-align:center;" >${pointNotice.nno }</td>
+												<td role="gridcell" >
+													<a href="#" onclick="OpenWindow('detail?bno=${pointNotice.nno }','','850','620')"
+													   style='<c:if test="${pointNotice.viewcnt >= 5}" >font-weight:bold;color:blue;</c:if>'>${pointNotice.title } 
+													   
+												</td>
+												<td role="gridcell" style="text-align:center;" >
+													<fmt:formatDate value="${pointNotice.regDate }" pattern="yyyy-MM-dd" />
+												</td>
+												<td role="gridcell" style="text-align:center;" >
+													<a class="maninfo" rel="20180117182516" href="#" data-hasqtip="21">
+														<i class="pink2 ace-icon fa fa-user" title="작성자"></i>															
+														${pointNotice.writer }
+													</a>
+												</td>
+												<td></td>
+												<td role="gridcell" style="text-align:center;" >${pointNotice.viewcnt }</td>
+											</tr>
+											</c:forEach>												
+										</table>
+									</div>
 									<div style="position:relative;">
 										<div></div>
 											<table id="grid-table" tabindex="0" role="presentation" aria-multiselectable="false" aria-labelledby="gbox_grid-table" class="ui-jqgrid-btable ui-common-table">
 												
 													<tr class="jqgfirstrow" role="row">
-														<td role="gridcell" style="width:7%;"></td>
+														<td role="gridcell" style="width:3%;"></td>
+														<td role="gridcell" style="width:8%;"></td>
 														<td role="gridcell" style=""></td>
 														<td role="gridcell" style="width:15%;"></td>
 														<td role="gridcell" style="width:15%;"></td>
+														<td role="gridcell" style="width:3%;"></td>
 														<td role="gridcell" style="width:10%;"></td>
 													</tr>
-													<c:forEach var="board" items="${boardList }">
+													<c:forEach var="notice" items="${noticeList }">
 													<tr role="row" class="jqgrow ui-row-ltr ui-widget-content">
-														<td role="gridcell" style="text-align:center;" >${board.bno }</td>
+														<td role="gridcell" style="text-align:center;" >
+															<c:if test="${notice.point > 0 }">
+																&nbsp;<i class="red ace-icon fa fa-star bigger-120" title="중요"></i>
+															</c:if>
+															<c:if test="${notice.point < 1 }">
+																&nbsp;<i class="light-grey ace-icon fa fa-star-o bigger-120" title="일반"></i>
+															</c:if>
+														</td>
+														<td role="gridcell" style="text-align:center;" >${notice.nno }</td>
 														<td role="gridcell" >
-															<a href="#" onclick="OpenWindow('detail?bno=${board.bno }','','850','620')"
-															   style='<c:if test="${board.viewcnt >= 5}" >font-weight:bold;color:blue;</c:if>'>${board.title } 
-															   <c:if test="${board.replycnt > 0}" >
-															   -- <span style="color:blue;font-weight:bole;">[${board.replycnt}]</span></a>
-															   </c:if>
+															<a href="#" onclick="OpenWindow('detail?bno=${notice.nno }','','850','620')"
+															   style='<c:if test="${notice.viewcnt >= 5}" >font-weight:bold;color:blue;</c:if>'>${notice.title } 
+															   
 														</td>
 														<td role="gridcell" style="text-align:center;" >
-															<fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd" />
+															<fmt:formatDate value="${notice.regDate }" pattern="yyyy-MM-dd" />
 														</td>
 														<td role="gridcell" style="text-align:center;" >
 															<a class="maninfo" rel="20180117182516" href="#" data-hasqtip="21">
 																<i class="pink2 ace-icon fa fa-user" title="작성자"></i>															
-																${board.writer }
+																${notice.writer }
 															</a>
 														</td>
-														<td role="gridcell" style="text-align:center;" >${board.viewcnt }</td>
+														<td></td>
+														<td role="gridcell" style="text-align:center;" >${notice.viewcnt }</td>
 													</tr>
 													</c:forEach>
 												

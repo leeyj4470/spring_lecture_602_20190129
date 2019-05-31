@@ -9,5 +9,6 @@
 		<pattern>/commons/login*</pattern>	
 		<pattern>/board/free/detail*</pattern>	
 		<pattern>/board/regist*</pattern>
+		<pattern>/board/modify*</pattern>
 	</excludes>
 </decorators>

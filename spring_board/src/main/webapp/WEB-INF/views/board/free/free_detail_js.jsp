@@ -420,6 +420,9 @@ function checkpopupoff(bbsId, docId, event, elem) {
 	function modify_go(category){
 		location.href="../modify?category="+category+"&bno="+${board.bno};
 	}
+	function remove_go(category){
+		location.href="../remove?category="+category+"&bno="+${board.bno};	
+	}
 </script>
 
 

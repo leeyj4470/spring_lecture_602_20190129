@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,13 +86,15 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			<!-- 문서 편집 이력 && 익명사용 -->
 			</div>
 			
-			<div>					
+			<div>
+				<c:if test="${loginUser.id eq board.writer}">					
 				<button type="button" class="btn btn-sm btn-white btn-bold"  onclick="modify_go('free');">
 					<i class="red ace-icon fa fa-pencil bigger-120"></i><b>편집</b>
 				</button>		
-				<button type="button" class="btn btn-sm btn-white btn-bold" >
+				<button type="button" class="btn btn-sm btn-white btn-bold" onclick="remove_go('free');" >
 					<i class="red ace-icon fa fa-trash bigger-120"></i><b>삭제</b>
 				</button>		
+				</c:if>
 				<button type="button" class="btn btn-sm btn-white btn-bold" onclick="javascript:docPrint('document');">
 					<i class="grey ace-icon fa fa-print bigger-120"></i><b>인쇄</b>
 				</button>
