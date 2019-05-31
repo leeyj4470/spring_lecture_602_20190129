@@ -415,3 +415,19 @@ function checkpopupoff(bbsId, docId, event, elem) {
 	//return false;
 }
 </script>
+
+<script>
+	function modify_go(category){
+		location.href="../modify?category="+category+"&bno="+${board.bno};
+	}
+</script>
+
+
+
+
+
+
+
+
+
+

@@ -86,7 +86,7 @@ body { font-family: 'Malgun Gothic', sans-serif !important; }
 			</div>
 			
 			<div>					
-				<button type="button" class="btn btn-sm btn-white btn-bold" >
+				<button type="button" class="btn btn-sm btn-white btn-bold"  onclick="modify_go('free');">
 					<i class="red ace-icon fa fa-pencil bigger-120"></i><b>편집</b>
 				</button>		
 				<button type="button" class="btn btn-sm btn-white btn-bold" >

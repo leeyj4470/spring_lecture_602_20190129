@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,6 +81,13 @@ public class BoardController {
 	public String registForm() {
 		String url="board/regist";
 		return url;
+	}
+	@RequestMapping(value="/modify",method=RequestMethod.GET)
+	public void modifyForm(@ModelAttribute("category") String category,
+						   int bno,Model model) throws Exception{
+		
+		BoardVO board = bService.getBoardForModify(bno);
+		model.addAttribute("board",board);
 	}
 	
 	@RequestMapping(value="/free/regist",method=RequestMethod.POST)
